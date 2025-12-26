@@ -1,9 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     /* ===============================
-       🎂 BIRTHDAY COUNTDOWN
+       🎂 BIRTHDAY DATE (SAFE MODE)
+       OPTION 2: Timezone-proof
     ================================ */
-    const birthday = new Date("2026-02-27T00:00:00").getTime();
+
+    // 🔴 REAL DATE (USE THIS AFTER TEST)
+    // const birthday = new Date(2026, 1, 27, 0, 0, 0).getTime();
+
+    // 🟢 TEST MODE (10 seconds from now)
+    const birthday = Date.now() + 10000;
 
     const countdownEl = document.getElementById("countdown");
     const messageEl = document.getElementById("message");
@@ -23,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (diff <= 0) {
             countdownEl.classList.add("hidden");
 
-            // Smooth reveal
             messageEl.classList.remove("hidden");
             slideshowEl.classList.remove("hidden");
 
@@ -44,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(updateCountdown, 1000);
 
     /* ===============================
-       📸 PHOTO SLIDESHOW
+       📸 SLIDESHOW
     ================================ */
     const photos = [
         { src: "photos/photo1.jpeg", text: "Our first beautiful memory ❤️" },
@@ -77,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ===============================
-   🎶 MUSIC CONTROL (SMOOTH FADE)
+   🎶 MUSIC (SMOOTH FADE-IN)
 ================================ */
 function playMusic() {
     const music = document.getElementById("music");
@@ -101,7 +106,7 @@ function playMusic() {
 }
 
 /* ===============================
-   💖 FLOATING HEARTS (ROMANTIC)
+   💖 FLOATING HEARTS
 ================================ */
 setInterval(() => {
     const heart = document.createElement("div");
@@ -113,6 +118,5 @@ setInterval(() => {
     heart.style.animationDuration = (6 + Math.random() * 4) + "s";
 
     document.body.appendChild(heart);
-
     setTimeout(() => heart.remove(), 9000);
 }, 500);
